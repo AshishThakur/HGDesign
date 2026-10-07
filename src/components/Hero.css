@@ -1,0 +1,216 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100svh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.hero__base {
+  z-index: 0;
+  filter: brightness(0.85); /* Thoda aur cinematic dark look ke liye */
+}
+
+/* Spotlight reveal with soft premium feathering */
+.hero__reveal {
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --x: 50%;
+  --y: 50%;
+  --r: 280px;
+  -webkit-mask-image: radial-gradient(circle var(--r) at var(--x) var(--y), #000 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.2) 80%, transparent 100%);
+  mask-image: radial-gradient(circle var(--r) at var(--x) var(--y), #000 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.2) 80%, transparent 100%);
+}
+
+.hero__reveal.is-on {
+  opacity: 1;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(24px, 3.5vw, 48px) clamp(24px, 4.5vw, 64px);
+}
+
+/* Navigation */
+.hero__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero__logo {
+  font-family: var(--mono, monospace);
+  font-size: 0.85rem;
+  letter-spacing: 0.4em;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.hero__links {
+  display: flex;
+  gap: clamp(24px, 3vw, 48px);
+  list-style: none;
+}
+
+.hero__links a,
+.hero__menu {
+  font-family: var(--mono, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.hero__links a:hover,
+.hero__menu:hover {
+  color: #fff;
+}
+
+.hero__menu {
+  display: none;
+}
+
+/* Oversized Title */
+.hero__title {
+  font-family: var(--display, sans-serif);
+  font-weight: 400;
+  font-size: clamp(5rem, 22vw, 28rem);
+  line-height: 0.8;
+  letter-spacing: -0.03em;
+  text-align: center;
+  margin: auto 0;
+  color: #ffffff;
+  user-select: none;
+  text-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* Bottom text area */
+.hero__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero__copy {
+  max-width: 480px;
+}
+
+.hero__eyebrow {
+  font-family: var(--mono, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #8ab4f8; /* Soft glowing accent */
+  margin-bottom: 12px;
+}
+
+.hero__desc {
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hero__cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Modern Buttons with smooth hover glow */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 30px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  font-family: var(--mono, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
+}
+
+.btn--solid {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.btn--solid:hover {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: none;
+}
+
+/* Responsive queries */
+@media (max-width: 820px) {
+  .hero__links {
+    display: none;
+  }
+  .hero__menu {
+    display: block;
+  }
+  .hero__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero__cta {
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__reveal {
+    transition: none;
+  }
+}

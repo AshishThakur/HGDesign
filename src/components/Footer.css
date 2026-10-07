@@ -1,0 +1,200 @@
+.footer {
+  position: relative;
+  background: #000;
+  color: var(--text, #ede8dc);
+  padding: clamp(100px, 14vw, 180px) clamp(24px, 5vw, 64px) 50px;
+  overflow: hidden;
+  border-top: 1px solid rgba(237, 232, 220, 0.08);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s cubic-bezier(0.2, 0.7, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height: 400px;
+  background: radial-gradient(ellipse at bottom, rgba(138, 154, 134, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer.in {
+  opacity: 1;
+  transform: none;
+}
+
+.footer__top {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: clamp(40px, 8vw, 100px);
+  align-items: start;
+}
+
+.footer__label {
+  display: block;
+  font-family: var(--mono, monospace);
+  font-size: .68rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--moss, #8a9a86);
+  margin-bottom: 18px;
+  position: relative;
+  padding-left: 12px;
+}
+
+.footer__label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--moss, #8a9a86);
+  border-radius: 50%;
+}
+
+.footer__statement p {
+  font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+  line-height: 1.8;
+  color: var(--text-dim, #a39f94);
+  max-width: 42ch;
+}
+
+.footer__col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer__col a {
+  font-family: var(--display, sans-serif);
+  font-size: 1.15rem;
+  color: var(--text, #ede8dc);
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer__col a:hover {
+  color: var(--moss, #8a9a86);
+  transform: translateX(6px);
+}
+
+.footer__col .arrow {
+  font-size: 0.85rem;
+  color: var(--ember, #d97757);
+  transition: transform 0.4s;
+}
+
+.footer__col a:hover .arrow {
+  transform: translate(3px, -3px);
+}
+
+/* Modern Eye-Catching FLORIA Typography Styling */
+.footer__word {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: clamp(70px, 10vw, 120px) auto clamp(50px, 7vw, 90px);
+  display: flex;
+  justify-content: center;
+  gap: clamp(10px, 3vw, 40px);
+  user-select: none;
+  line-height: 0.8;
+}
+
+.footer__word span {
+  font-family: var(--display, sans-serif);
+  font-weight: 600;
+  font-size: clamp(5rem, 18vw, 18rem);
+  color: rgba(237, 232, 220, 0.04);
+  -webkit-text-stroke: 1.5px rgba(237, 232, 220, 0.25);
+  text-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+  transition: all 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  cursor: default;
+  display: inline-block;
+}
+
+.footer__word span:hover {
+  color: var(--moss, #8a9a86);
+  -webkit-text-stroke: 2px var(--moss, #8a9a86);
+  transform: translateY(-16px) scale(1.05);
+  text-shadow: 0 20px 50px rgba(138, 154, 134, 0.4);
+}
+
+.footer__bottom {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 35px;
+  border-top: 1px solid rgba(237, 232, 220, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono, monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim, #a39f94);
+}
+
+.footer__fin {
+  font-style: italic;
+  letter-spacing: 0.25em;
+  color: var(--ember, #d97757);
+}
+
+.footer__bottom a {
+  color: var(--text, #ede8dc);
+  text-decoration: none;
+  transition: color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer__bottom a:hover {
+  color: var(--moss, #8a9a86);
+}
+
+.footer__bottom a .arrow-up {
+  transition: transform 0.3s;
+}
+
+.footer__bottom a:hover .arrow-up {
+  transform: translateY(-4px);
+}
+
+@media (max-width: 900px) {
+  .footer__top {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer__bottom {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  .footer__word {
+    gap: 8px;
+  }
+}

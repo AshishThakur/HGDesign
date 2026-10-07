@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import './Hero.css'
 
-const RADIUS = 280 // Slightly larger spotlight for a richer reveal effect
+const RADIUS = 280 
 
 export default function Hero() {
   const heroRef = useRef(null)

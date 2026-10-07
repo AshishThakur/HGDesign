@@ -72,7 +72,7 @@ export default function FieldNotes() {
           ))}
         </div>
 
-        {/* Active Content Display */}
+      
         <div className="field-notes__content-box">
           <div className="content-meta">
             <span className="meta-cat">{NOTES[activeTab].category}</span>

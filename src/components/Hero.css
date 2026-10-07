@@ -22,10 +22,10 @@
 
 .hero__base {
   z-index: 0;
-  filter: brightness(0.85); /* Thoda aur cinematic dark look ke liye */
+  filter: brightness(0.85);
 }
 
-/* Spotlight reveal with soft premium feathering */
+
 .hero__reveal {
   z-index: 1;
   pointer-events: none;
